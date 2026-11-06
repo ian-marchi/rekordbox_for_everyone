@@ -9,7 +9,7 @@ Projeto experimental que adapta uma instalação própria do rekordbox para reco
 | macOS Intel | rekordbox **6.8.5.0002** | Alvo: MacBook Pro 2011 com Ventura 13.7.8. Alterações verificadas no executável original; **a cópia e a controladora ainda precisam ser testadas no Mac**. |
 | Windows x64 | rekordbox **7.2.14**, build identificado pelo SHA-256 abaixo | Reconhecimento e jogs 1–4 testados com uma REV1. A ativação dos jogs 3/4 foi confirmada em memória; o procedimento de instalação e inicialização publicado requer teste de ponta a ponta em uma instalação limpa. |
 
-O instalador recusa executáveis com hash diferente, mesmo que a versão exibida seja a mesma. **A correção dos jogs 3/4, os efeitos especiais e o mixer de fone do Windows ainda não foram portados para o Mac.** O CSV do macOS contém entradas para quatro decks, mas isso não comprova que os jogs 3/4 funcionem nele.
+O instalador recusa executáveis com hash diferente, mesmo que a versão exibida seja a mesma. O **mesmo CSV de mapeamento dos quatro decks** usado no Windows já está incluído no Mac. **A correção dos processadores de jog 3/4, os efeitos especiais e o mixer de fone do Windows ainda não foram portados para o Mac.** As entradas do CSV, por si só, não comprovam que os jogs 3/4 funcionem nele.
 
 ## macOS — prioridade para o MacBook Pro 2011
 
@@ -48,6 +48,18 @@ open "$HOME/Applications/rekordbox REV1 6.8.5.app"
 ```
 
 Confira reconhecimento, áudio, PLAY, CUE, pads, LEDs, jogs e FX. Para um diagnóstico somente de leitura, execute `python3 diagnostico.py` na pasta `macos`. Ele informa versão, modelo, compatibilidade do executável e assinatura local; o resultado não contém o número de série USB. Se a verificação ou abertura falhar, compartilhe a mensagem de erro e a saída do diagnóstico para investigação.
+
+### Diagnóstico dos jogs no Mac
+
+Se a cópia abrir e a REV1 for reconhecida, o diagnóstico abaixo ajuda a adaptar os jogs 3/4 para o motor específico do macOS. Ele observa temporariamente quais decks recebem eventos de giro e toque e se existe um processador associado; **não ativa a correção**. Com a cópia aberta e a REV1 conectada, no Terminal dentro da pasta `macos` execute:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install frida==17.25.2
+.venv/bin/python diagnostico_jogs.py
+```
+
+Durante os 45 segundos seguintes, selecione cada deck e toque e gire seu jog. Envie a saída exibida, inclusive qualquer erro. O programa usa instrumentação temporária no processo e não grava ou modifica o mapeamento; a conexão pode ser recusada pelas permissões ou pela assinatura do macOS. Seu resultado é necessário para verificar se a ausência dos processadores observada no Windows também ocorre no Mac.
 
 ### Remover no macOS
 
