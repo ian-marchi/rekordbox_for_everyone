@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+frida_runtime/
+*.log
+*.backup
+*.bak
+*.exe
+*.pkg
+*.dmg
+*.app/

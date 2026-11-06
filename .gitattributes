@@ -1,0 +1,6 @@
+# Binary hashes and the rekordbox mapping format depend on exact CSV bytes.
+*.csv -text whitespace=cr-at-eol
+*.py text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.cmd text eol=crlf
