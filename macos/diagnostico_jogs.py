@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Observa eventos dos jogs no rekordbox REV1 6.8.5 Intel por 45 segundos."""
+import argparse
 import json
 from pathlib import Path
 import subprocess
@@ -27,10 +28,14 @@ def check_executable(executable):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--stems', action='store_true', help='diagnosticar a copia REV1 Stems')
+    args = parser.parse_args()
     if sys.platform != 'darwin':
         raise RuntimeError('Execute no Mac Intel com o rekordbox REV1 aberto.')
     import frida
-    executable = install.inspect_app(install.DESTINATION).resolve(strict=True)
+    app = install.STEMS_DESTINATION if args.stems else install.DESTINATION
+    executable = install.inspect_app(app).resolve(strict=True)
     check_executable(executable)
     device = frida.get_local_device()
     candidates = [p.pid for p in device.enumerate_processes() if p.name == 'rekordbox']

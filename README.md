@@ -49,6 +49,20 @@ open "$HOME/Applications/rekordbox REV1 6.8.5.app"
 
 Confira reconhecimento, áudio, PLAY, CUE, pads, LEDs, jogs e FX. Para um diagnóstico somente de leitura, execute `python3 diagnostico.py` na pasta `macos`. Ele informa versão, modelo, compatibilidade do executável e assinatura local; o resultado não contém o número de série USB. Se a verificação ou abertura falhar, compartilhe a mensagem de erro e a saída do diagnóstico para investigação.
 
+### Cópia experimental com pads de stems
+
+Na pasta clonada, atualize os arquivos com `git pull`. Feche o rekordbox e, na pasta `macos`, execute:
+
+```bash
+python3 install.py --stems --check
+python3 install.py --stems
+open "$HOME/Applications/rekordbox REV1 Stems 6.8.5.app"
+```
+
+Isso cria uma segunda cópia, sem substituir a cópia REV1 existente. No modo **Sampler**, os pads 1, 2 e 3 são mapeados para **DRUMS**, **VOCAL** e **INST**; os outros pads do modo Sampler e suas funções com SHIFT são removidos desse perfil. Os outros modos do mapeamento são preservados. O rekordbox 6.8.5 contém os identificadores dessas três funções, mas **o acionamento, os LEDs e a sincronização com os botões da tela ainda não foram verificados na REV1 com macOS**. Teste com uma faixa carregada e relate o resultado; se os LEDs ou as funções não responderem, não os considere validados.
+
+O mapeamento pessoal REV1 é compartilhado entre as cópias do rekordbox. Se ele já existir, o instalador cria um backup `DDJ-REV1.midi.csv.before-rev1-*.backup` e instala o perfil de stems nesse local, portanto a cópia REV1 anterior também poderá usar o novo perfil. Para desfazer essa troca, feche o rekordbox e restaure o backup como `DDJ-REV1.midi.csv` na mesma pasta. O aplicativo REV1 Stems pode ser removido separadamente.
+
 ### Diagnóstico dos jogs no Mac
 
 Se a cópia abrir e a REV1 for reconhecida, o diagnóstico abaixo ajuda a adaptar os jogs 3/4 para o motor específico do macOS. Ele observa temporariamente quais decks recebem eventos de giro e toque e se existe um processador associado; **não ativa a correção**. Com a cópia aberta e a REV1 conectada, no Terminal dentro da pasta `macos` execute:
@@ -60,6 +74,8 @@ python3 -m venv .venv
 ```
 
 Durante os 45 segundos seguintes, selecione cada deck e toque e gire seu jog. Envie a saída exibida, inclusive qualquer erro. O programa usa instrumentação temporária no processo e não grava ou modifica o mapeamento; a conexão pode ser recusada pelas permissões ou pela assinatura do macOS. Seu resultado é necessário para verificar se a ausência dos processadores observada no Windows também ocorre no Mac.
+
+Se estiver usando a cópia REV1 Stems, acrescente `--stems` ao último comando: `.venv/bin/python diagnostico_jogs.py --stems`.
 
 ### Remover no macOS
 

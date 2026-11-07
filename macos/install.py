@@ -14,6 +14,7 @@ import time
 HERE = Path(__file__).resolve().parent
 DEFAULT_APP = Path('/Applications/rekordbox 6/rekordbox.app')
 DESTINATION = Path.home() / 'Applications' / 'rekordbox REV1 6.8.5.app'
+STEMS_DESTINATION = Path.home() / 'Applications' / 'rekordbox REV1 Stems 6.8.5.app'
 ORIGINAL_SHA256 = 'ba9a80ea5fdb01f1981d8b05cc6b35c9b9bd480919aab58184ea3c89b90f50c5'
 PATCHED_SHA256 = '15c0752720562f7658c72ee2f0ef47f50132b9196d3013431be787ef83f012d9'
 MAPPING_SHA256 = 'd2e95ba0a2cd4f29a3a06ef0478d4a587eb7da845504ecbfed4f5e5a35b88fcc'
@@ -48,12 +49,41 @@ def patch_binary(original):
     return out
 
 
-def mapping_data():
+def stems_mapping(data):
+    """Experimental: substitute three sampler-mode pads with track separation."""
+    lines = data.splitlines(keepends=True)
+    replacements = {1: b'ActivePartDrums', 2: b'ActivePartVocal', 3: b'ActivePartInst'}
+    found = set()
+    output = []
+    for line in lines:
+        fields = line.split(b',')
+        if len(fields) > 1:
+            for pad in range(1, 9):
+                sampler = f'PAD{pad}_Sampler'.encode()
+                if fields[0] == sampler and fields[1] == f'PAD{pad}_PadMode4'.encode():
+                    found.add((pad, False))
+                    if pad in replacements:
+                        fields[0] = replacements[pad]
+                        output.append(b','.join(fields))
+                    break
+                if fields[0] == sampler + b'+Shift' and fields[1] == f'PAD{pad}_PadMode4+Shift'.encode():
+                    found.add((pad, True))
+                    break
+            else:
+                output.append(line)
+        else:
+            output.append(line)
+    if found != {(pad, shift) for pad in range(1, 9) for shift in (False, True)}:
+        raise ValueError('Entradas do modo sampler nao correspondem ao mapeamento esperado.')
+    return b''.join(output)
+
+
+def mapping_data(stems=False):
     path = HERE / MAP_NAME
     data = path.read_bytes()
     if digest(data) != MAPPING_SHA256:
         raise ValueError('Mapeamento ausente ou alterado; nao sera instalado.')
-    return data
+    return stems_mapping(data) if stems else data
 
 
 def inspect_app(app):
@@ -85,6 +115,8 @@ def main(argv=None):
                         help='Caminho do rekordbox.app original')
     parser.add_argument('--check', action='store_true',
                         help='Verificar compatibilidade sem modificar arquivos')
+    parser.add_argument('--stems', action='store_true',
+                        help='Criar copia separada com pads de stems experimentais')
     args = parser.parse_args(argv)
     if sys.platform != 'darwin':
         raise RuntimeError('Execute este instalador em um Mac com macOS.')
@@ -93,7 +125,8 @@ def main(argv=None):
     app = args.app.expanduser().resolve(strict=True)
     executable = inspect_app(app)
     patched = patch_binary(executable.read_bytes())
-    mapping = mapping_data()
+    mapping = mapping_data(stems=args.stems)
+    destination = STEMS_DESTINATION if args.stems else DESTINATION
     print('Build Intel 6.8.5.0002 e mapeamento: verificados.')
     overrides = existing_user_maps()
     for item in overrides:
@@ -101,11 +134,11 @@ def main(argv=None):
     if args.check:
         print('Verificacao concluida; nenhum arquivo foi alterado.')
         return
-    if DESTINATION.exists():
-        raise FileExistsError(f'Destino ja existe; nao sera sobrescrito: {DESTINATION}')
-    DESTINATION.parent.mkdir(parents=True, exist_ok=True)
-    staging_root = Path(tempfile.mkdtemp(prefix='.rev1-install-', dir=str(DESTINATION.parent)))
-    staged_app = staging_root / DESTINATION.name
+    if destination.exists():
+        raise FileExistsError(f'Destino ja existe; nao sera sobrescrito: {destination}')
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    staging_root = Path(tempfile.mkdtemp(prefix='.rev1-install-', dir=str(destination.parent)))
+    staged_app = staging_root / destination.name
     changed_overrides = []
     installed = False
     try:
@@ -133,7 +166,7 @@ def main(argv=None):
             raise RuntimeError('Uma instrucao PID mudou apos a assinatura.')
         # Sempre preservar os mapas pessoais existentes antes de qualquer substituicao.
         for old in overrides:
-            if digest(old.read_bytes()) == MAPPING_SHA256:
+            if old.read_bytes() == mapping:
                 continue
             backup = old.with_name(old.name + '.before-rev1-' + str(time.time_ns()) + '.backup')
             with backup.open('xb') as stream:
@@ -141,9 +174,9 @@ def main(argv=None):
             changed_overrides.append((old, backup))
             old.write_bytes(mapping)
             print(f'Backup do mapeamento anterior: {backup}')
-        os.rename(staged_app, DESTINATION)
+        os.rename(staged_app, destination)
         installed = True
-        print(f'Instalado: {DESTINATION}')
+        print(f'Instalado: {destination}')
         print('Abra a COPIA instalada, com a REV1 conectada.')
         print('Instalacao experimental: o funcionamento no Mac ainda precisa ser testado.')
     finally:
