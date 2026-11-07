@@ -45,7 +45,8 @@ def main():
         script.on('message', lambda message, data: print(json.dumps(
             message.get('payload', message), ensure_ascii=False), flush=True))
         script.load()
-        print('Por 45 segundos, pressione FX 1, a alavanca, e os tres pads de stems.', flush=True)
+        print('Por 45 segundos: primeiro pressione Sampler e os tres pads de stems duas vezes;', flush=True)
+        print('depois pressione FX 1 e mova a alavanca.', flush=True)
         done.wait(45)
     finally:
         try:
