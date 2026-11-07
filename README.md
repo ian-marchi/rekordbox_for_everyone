@@ -69,7 +69,7 @@ Se a cópia abrir e a REV1 for reconhecida, o diagnóstico abaixo ajuda a adapta
 
 ```bash
 python3 -m venv .venv
-.venv/bin/python -m pip install frida==17.25.2
+.venv/bin/python -m pip install frida==16.5.9
 .venv/bin/python diagnostico_jogs.py
 ```
 
@@ -83,11 +83,13 @@ Para investigar a diferença entre o perfil de FX do Windows e o Mac e a invers�
 
 ```bash
 python3 -m venv .venv
-.venv/bin/python -m pip install frida==17.25.2
+.venv/bin/python -m pip install frida==16.5.9
 .venv/bin/python diagnostico_fx_led.py
 ```
 
 Durante os 45 segundos de observação, pressione e solte FX 1, mova a alavanca do efeito, selecione Sampler e pressione cada um dos três pads de stems duas vezes. Envie a saída do Terminal e informe quais LEDs ficaram acesos quando cada parte estava audível. O diagnóstico observa temporariamente mensagens MIDI limitadas a esses controles e não muda o perfil. As correções de FX e LEDs ainda dependem do resultado e de testes no Mac.
+
+No Python 3.7, a versão `17.25.2` do Frida apresentou erro ao importar `Literal`. O comando acima troca o Frida dentro da `.venv` pela versão `16.5.9`, que fornece compatibilidade com Python 3.7; não é necessário recriar a `.venv`. Se a instalação ou o diagnóstico falhar, envie a mensagem completa.
 
 ### Remover no macOS
 
