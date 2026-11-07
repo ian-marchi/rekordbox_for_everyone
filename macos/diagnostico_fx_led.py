@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Observa MIDI de FX e pads na copia REV1 Stems do rekordbox 6.8.5 Intel."""
+import argparse
 import json
 from pathlib import Path
 import subprocess
@@ -8,6 +9,7 @@ import threading
 
 import diagnostico_jogs
 import install
+import preparar_diagnostico
 
 HERE = Path(__file__).resolve().parent
 METHODS = {0x150dd60: bytes.fromhex('554889e5415741564155415453'),
@@ -15,10 +17,14 @@ METHODS = {0x150dd60: bytes.fromhex('554889e5415741564155415453'),
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--debug', action='store_true', help='usar a copia de diagnostico separada')
+    args = parser.parse_args()
     if sys.platform != 'darwin':
         raise RuntimeError('Execute no Mac com o rekordbox REV1 Stems aberto.')
     import frida
-    executable = install.inspect_app(install.STEMS_DESTINATION).resolve(strict=True)
+    app = preparar_diagnostico.DESTINATION if args.debug else install.STEMS_DESTINATION
+    executable = install.inspect_app(app).resolve(strict=True)
     diagnostico_jogs.check_executable(executable)
     binary = executable.read_bytes()
     if any(binary[offset:offset + len(expected)] != expected for offset, expected in METHODS.items()):
@@ -26,11 +32,11 @@ def main():
     device = frida.get_local_device()
     processes = [p.pid for p in device.enumerate_processes() if p.name == 'rekordbox']
     if len(processes) != 1:
-        raise RuntimeError('Abra somente a copia REV1 Stems e tente novamente.')
+        raise RuntimeError('Abra somente a copia REV1 selecionada e tente novamente.')
     process_path = subprocess.run(['/bin/ps', '-p', str(processes[0]), '-o', 'comm='],
                                   capture_output=True, text=True, check=True).stdout.strip()
     if Path(process_path).resolve() != executable:
-        raise RuntimeError('O processo aberto nao e a copia REV1 Stems esperada.')
+        raise RuntimeError('O processo aberto nao e a copia REV1 selecionada.')
     done = threading.Event()
     session = device.attach(processes[0])
     session.on('detached', lambda *args: done.set())

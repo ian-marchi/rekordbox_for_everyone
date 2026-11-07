@@ -91,6 +91,17 @@ Durante os 45 segundos de observação, pressione e solte FX 1, mova a alavanca 
 
 No Python 3.7, a versão `17.25.2` do Frida apresentou erro ao importar `Literal`. O comando acima troca o Frida dentro da `.venv` pela versão `16.5.9`, que fornece compatibilidade com Python 3.7; não é necessário recriar a `.venv`. Se a instalação ou o diagnóstico falhar, envie a mensagem completa.
 
+Se o diagnóstico apresentar `unable to access process` mesmo como administrador, é possível preparar uma cópia separada com a permissão `com.apple.security.get-task-allow`, preservando as permissões de assinatura existentes:
+
+```bash
+# Feche o rekordbox primeiro, depois execute na pasta macos:
+python3 preparar_diagnostico.py
+open "$HOME/Applications/rekordbox REV1 Diagnostico 6.8.5.app"
+sudo env HOME="$HOME" "$PWD/.venv/bin/python" diagnostico_fx_led.py --debug
+```
+
+O comando verifica a cópia REV1 Stems, cria `rekordbox REV1 Diagnostico 6.8.5.app` separadamente, assina e verifica a nova cópia. Ela utiliza as mesmas configurações e biblioteca do rekordbox e pode ser apagada quando não for mais necessária. `get-task-allow` pode permitir a conexão, mas a autorização depende também das proteções do macOS; se falhar, compartilhe a mensagem. Não é necessário alterar o SIP para executar esses comandos.
+
 ### Remover no macOS
 
 Feche o rekordbox e remova `~/Applications/rekordbox REV1 6.8.5.app`. Caso um mapeamento pessoal anterior tenha sido substituído, restaure o arquivo `DDJ-REV1.midi.csv.before-rev1-*.backup` para `DDJ-REV1.midi.csv` na mesma pasta. O aplicativo original continua disponível.
