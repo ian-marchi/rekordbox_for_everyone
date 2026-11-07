@@ -77,6 +77,18 @@ Durante os 45 segundos seguintes, selecione cada deck e toque e gire seu jog. En
 
 Se estiver usando a cópia REV1 Stems, acrescente `--stems` ao último comando: `.venv/bin/python diagnostico_jogs.py --stems`.
 
+### Diagnóstico de FX e LEDs dos stems
+
+Para investigar a diferença entre o perfil de FX do Windows e o Mac e a inversão dos LEDs de stems, feche outros aplicativos MIDI, conecte apenas a REV1, abra a cópia REV1 Stems e, na pasta `macos`, execute:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install frida==17.25.2
+.venv/bin/python diagnostico_fx_led.py
+```
+
+Durante os 45 segundos de observação, pressione e solte FX 1, mova a alavanca do efeito, selecione Sampler e pressione cada um dos três pads de stems duas vezes. Envie a saída do Terminal e informe quais LEDs ficaram acesos quando cada parte estava audível. O diagnóstico observa temporariamente mensagens MIDI limitadas a esses controles e não muda o perfil. As correções de FX e LEDs ainda dependem do resultado e de testes no Mac.
+
 ### Remover no macOS
 
 Feche o rekordbox e remova `~/Applications/rekordbox REV1 6.8.5.app`. Caso um mapeamento pessoal anterior tenha sido substituído, restaure o arquivo `DDJ-REV1.midi.csv.before-rev1-*.backup` para `DDJ-REV1.midi.csv` na mesma pasta. O aplicativo original continua disponível.
