@@ -1,0 +1,200 @@
+@file,1,DDJ-REV1
+4BeatLoop,4BeatLoop,Button,,9014,9114,9214,9314,,9014,9114,9214,9314,Fast;,4Beat Loop
+ActiveLoop,4BeatLoop+Shift,Button,,9050,9150,9250,9350,,9050,9150,9250,9350,,Loop Active/Non active
+Back,Browse+Press+Shift,Button,9642,,,,,,,,,,,Library Back (Folder Close)
+BackSpinLengthSetting,BackSpinLengthSetting,Indicator,,,,,,BF45,,,,,RO;Priority=100;,Back Spin Length Setting
+BeatJump,BeatJumpMode,Button,,9020,9120,9220,9320,,9020,9120,9220,9320,Fast;,BEAT JUMP Mode On/Off
+BeatLoop,BeatJumpMode+Shift,Button,,906D,916D,926D,936D,,906D,916D,926D,936D,Fast;,BEAT LOOP Mode On/Off
+Browse,Browse,Rotary,B640,,,,,,,,,,,Browse(Track/Folder Select)
+CFXParameterCH1,CFXParameterCH1,KnobSliderHiRes,B617,,,,,,,,,,Fast;,CH1 CFX Depth
+CFXParameterCH2,CFXParameterCH2,KnobSliderHiRes,B618,,,,,,,,,,Fast;,CH2 CFX Depth
+CFXParameterCH3,CFXParameterCH3,KnobSliderHiRes,B619,,,,,,,,,,Fast;,CH3 CFX Depth
+CFXParameterCH4,CFXParameterCH4,KnobSliderHiRes,B61A,,,,,,,,,,Fast;,CH4 CFX Depth
+ChannelFader,ChannelFader,KnobSliderHiRes,,B013,B113,B213,B313,,,,,,,CH Fader
+ChannelLevel,ChannelLevel,Indicator,,,,,,,B002,B102,B202,B302,RO;Priority=50;,CH Level Indicator
+CrossFader,CrossFader,KnobSliderHiRes,B61F,,,,,,,,,,Fast;,Crossfader
+CrossFaderCutLagSetting,CrossFaderCutLagSetting,Indicator,,,,,,BF41,,,,,RO;Priority=100;,Cross Fader Cut Lag Setting
+CrossFaderReverseSetting,CrossFaderReverseSetting,Indicator,,,,,,9F43,,,,,RO;Priority=100;,Cross Fader Reverse Setting
+Cue,Cue,Button,,900C,910C,920C,930C,,900C,910C,920C,930C,Fast;Priority=50;,Cue Set/Play Cue Back
+Delete,CallLeft+Shift,Button,,903E,913E,923E,933E,,,,,,,Delete
+EQHigh,EQHigh,KnobSliderHiRes,,B007,B107,B207,B307,,,,,,Fast;,EQ High
+EQLow,EQLow,KnobSliderHiRes,,B00F,B10F,B20F,B30F,,,,,,Fast;,EQ Low
+EQMid,EQMid,KnobSliderHiRes,,B00B,B10B,B20B,B30B,,,,,,Fast;,EQ Mid
+FX1-1,FX1-1,KnobSliderHiRes,B402,,,,,,,,,,,FX1-1 Effect Depth
+FX1-1BeatDown,FX1-1BeatDown,Button,9406,,,,,,,,,,,FX1-1 Effect beat down
+FX1-1BeatUp,FX1-1BeatUp,Button,9407,,,,,,,,,,,FX1-1 Effect beat up
+FX1-1On,FX1-1On,Button,9470,,,,,9470,,,,,,FX1-1 Effect On/Off
+FX1-1Select,FX1-1Select.Down,Button,9463,,,,,,,,,,,FX select
+FX1-2On,FX1-2On,Button,9471,,,,,9471,,,,,,FX1-2 Effect On/Off
+FX1-3On,FX1-3On,Button,9472,,,,,9472,,,,,,FX1-3 Effect On/Off
+FX1AutoBeat,FX1-1BeatDown+Shift,Button,9466,,,,,,,,,,,FX1 Effect auto beat
+FX1Lever,FX1Lever,Button,9450,,,,,9450,,,,,,FX1 Effect lever (ON/LOCK)
+FX2-1,FX2-1,KnobSliderHiRes,B502,,,,,,,,,,,FX2-1 Effect Depth
+FX2-1BeatDown,FX2-1BeatDown,Button,9506,,,,,,,,,,,FX2-1 Effect beat down
+FX2-1BeatUp,FX2-1BeatUp,Button,9507,,,,,,,,,,,FX2-1 Effect beat up
+FX2-1On,FX2-1On,Button,9570,,,,,9570,,,,,,FX2-1 Effect On/Off
+FX2-1Select,FX2-1Select.Down,Button,9563,,,,,,,,,,,FX select
+FX2-2On,FX2-2On,Button,9571,,,,,9571,,,,,,FX2-2 Effect On/Off
+FX2-3On,FX2-3On,Button,9572,,,,,9572,,,,,,FX2-3 Effect On/Off
+FX2AutoBeat,FX2-1BeatDown+Shift,Button,9566,,,,,,,,,,,FX2 Effect auto beat
+FX2Lever,FX2Lever,Button,9550,,,,,9550,,,,,,FX2 Effect lever (ON/LOCK)
+FaderForSmartFaderSetting,FaderForSmartFaderSetting,Indicator,,,,,,BF4E,,,,,RO;Priority=100;,Fader used for SMART FADER Setting
+FaderStartSetting,FaderStartSetting,Indicator,,,,,,9F42,,,,,RO;Priority=100;,Fader Start Setting
+Forward,Browse+Press,Button,9641,,,,,,,,,,,Library Forward (Folder Open)
+Gain,Gain,KnobSliderHiRes,,B004,B104,B204,B304,,,,,,Fast;,Gain
+GetLoopActive,LoopState,Indicator,,,,,,,9F04,9F05,,,RO;Priority=100;,
+HeadphoneCue,HeadphoneCue,Button,,9054,9154,9254,9354,,9054,9154,9254,9354,,Headphone CUE On/Off
+HeadphonesVolume,HeadphonesVolume,KnobSliderHiRes,B60D,,,,,,,,,,,No function assigned here
+HotCue,HotCueMode,Button,,901B,911B,921B,931B,,901B,911B,921B,931B,Fast;,HOT CUE Mode On/Off
+InstDoubles,Load+Shift,Button,,9658,9659,9660,9661,,9658,9659,9660,9661,,Load to Deck / Instant Double (double click)
+JogRatency,JogRatency,Parameter,FFF2,,,,,,,,,,Value=4;,unused
+JumpToTrackStart,Cue+Shift,Button,,9048,9148,9248,9348,,9048,9148,9248,9348,Fast;Priority=50;,Jump to track start
+KeyShift,Sampler+Shift,Button,,906F,916F,926F,936F,,906F,916F,926F,936F,Fast;,KEY SHIFT Mode On/Off
+Keyboard,HotCue+Shift,Button,,9069,9169,9269,9369,,9069,9169,9269,9369,Fast;,KEYBOARD Mode On/Off
+LevelMeterSetting,LevelMeterSetting,Indicator,,,,,,9F4B,,,,,RO;Priority=100;,Switch Level Meter Setting (Channel/Master)
+Load,Load,Button,,9646,9647,9648,9649,,,,,,,Load to Deck / Instant Double (double click)
+LoadedIndicator,LoadedIndicator,Indicator,,,,,,,9F00,9F01,,,RO;Priority=100;,Trigger for Load illumination
+LoopDouble,CallRight,Button,,9013,9113,9213,9313,,,,,,Fast;,Loop Size Select (Double)
+LoopHalf,CallLeft,Button,,9012,9112,9212,9312,,,,,,Fast;,Loop Size Select (Half)
+LoopIn,LoopIn,Button,,9010,9110,9210,9310,,9010,9110,9210,9310,Fast;,Loop in/Loop in adjust
+LoopOut,LoopOut,Button,,9011,9111,9211,9311,,9011,9111,9211,9311,Fast;,Loop out/Loop out adjust
+Master,Sync+LongPress,Button,,905C,915C,925C,935C,,,,,,,Master On/Off
+MasterLevel,MasterLevel,KnobSliderHiRes,B608,,,,,,,,,,,No function assigned here
+MasterMonoStereoSetting,MasterMonoStereoSetting,Value,,,,,,9F47,,,,,RO;Priority=100;,Mono/Stereo Switch of Master
+MasterPeakLimiterSetting,MasterPeakLimiterSetting,Value,,,,,,9F49,,,,,RO;Priority=100;,Master Peak Limiter Setting
+Memory,CallRight+Shift,Button,,903D,913D,923D,933D,,,,,,,Memory
+MicInputSetting,MicInputSetting,Indicator,,,,,,9F4A,,,,,RO;Priority=100;,MIC Input Setting
+MidiOutInterval,MidiOutInterval,Parameter,FFF3,,,,,,,,,,Value=2;,
+PAD10_BeatLoop,PAD10_PadMode7,DdjSxPad,,9765,9965,9B65,9D65,,9765,9965,9B65,9D65,Fast;,
+PAD10_PadFx1,PAD2_PadMode2+Shift,DdjSxPad,,9811,9A11,9C11,9E11,,9811,9A11,9C11,9E11,Fast;,PAD FX1 Slot10 (momentary)
+PAD10_PadFx2,PAD2_PadMode6+Shift,DdjSxPad,,9851,9A51,9C51,9E51,,9851,9A51,9C51,9E51,Fast;,PAD FX2 Slot10 (momentary)
+PAD11_BeatLoop,PAD11_PadMode7,DdjSxPad,,9766,9966,9B66,9D66,,9766,9966,9B66,9D66,Fast;,
+PAD11_PadFx1,PAD3_PadMode2+Shift,DdjSxPad,,9812,9A12,9C12,9E12,,9812,9A12,9C12,9E12,Fast;,PAD FX1 Slot11 (momentary)
+PAD11_PadFx2,PAD3_PadMode6+Shift,DdjSxPad,,9852,9A52,9C52,9E52,,9852,9A52,9C52,9E52,Fast;,PAD FX2 Slot11 (momentary)
+PAD12_BeatLoop,PAD12_PadMode7,DdjSxPad,,9767,9967,9B67,9D67,,9767,9967,9B67,9D67,Fast;,
+PAD12_PadFx1,PAD4_PadMode2+Shift,DdjSxPad,,9813,9A13,9C13,9E13,,9813,9A13,9C13,9E13,Fast;,PAD FX1 Slot12 (momentary)
+PAD12_PadFx2,PAD4_PadMode6+Shift,DdjSxPad,,9853,9A53,9C53,9E53,,9853,9A53,9C53,9E53,Fast;,PAD FX2 Slot12 (momentary)
+PAD13_PadFx1,PAD5_PadMode2+Shift,DdjSxPad,,9814,9A14,9C14,9E14,,9814,9A14,9C14,9E14,Fast;,PAD FX1 Slot13 (momentary)
+PAD13_PadFx2,PAD5_PadMode6+Shift,DdjSxPad,,9854,9A54,9C54,9E54,,9854,9A54,9C54,9E54,Fast;,PAD FX2 Slot13 (momentary)
+PAD14_PadFx1,PAD6_PadMode2+Shift,DdjSxPad,,9815,9A15,9C15,9E15,,9815,9A15,9C15,9E15,Fast;,PAD FX1 Slot14 (momentary)
+PAD14_PadFx2,PAD6_PadMode6+Shift,DdjSxPad,,9855,9A55,9C55,9E55,,9855,9A55,9C55,9E55,Fast;,PAD FX2 Slot14 (momentary)
+PAD15_PadFx1,PAD7_PadMode2+Shift,DdjSxPad,,9816,9A16,9C16,9E16,,9816,9A16,9C16,9E16,Fast;,PAD FX1 Slot15 (momentary)
+PAD15_PadFx2,PAD7_PadMode6+Shift,DdjSxPad,,9856,9A56,9C56,9E56,,9856,9A56,9C56,9E56,Fast;,PAD FX2 Slot15 (momentary)
+PAD16_PadFx1,PAD8_PadMode2+Shift,DdjSxPad,,9817,9A17,9C17,9E17,,9817,9A17,9C17,9E17,Fast;,PAD FX1 Slot16 (momentary)
+PAD16_PadFx2,PAD8_PadMode6+Shift,DdjSxPad,,9857,9A57,9C57,9E57,,9857,9A57,9C57,9E57,Fast;,PAD FX2 Slot16 (momentary)
+PAD1_BeatJump,PAD1_PadMode3,DdjSxPad,,9720,9920,9B20,9D20,,9720,9920,9B20,9D20,Fast;,BEAT JUMP (REV1)
+PAD1_HotCue,PAD1_PadMode1,DdjSxPad,,9700,9900,9B00,9D00,,9700,9900,9B00,9D00,Fast;,HOT CUE1
+PAD1_HotCue+Shift,PAD1_PadMode1+Shift,DdjSxPad,,9800,9A00,9C00,9E00,,9800,9A00,9C00,9E00,Fast;,Delete HOT CUE1
+PAD1_KeyShift,PAD1_PadMode8,DdjSxPad,,9770,9970,9B70,9D70,,9770,9970,9B70,9D70,Fast;,
+PAD1_Keyboard,PAD1_PadMode5,DdjSxPad,,9740,9940,9B40,9D40,,9740,9940,9B40,9D40,Fast;,
+PAD1_Keyboard+Shift,PAD1_PadMode5+Shift,DdjSxPad,,9840,9A40,9C40,9E40,,9840,9A40,9C40,9E40,Fast;,
+PAD1_PadFx1,PAD1_PadMode2,DdjSxPad,,9710,9910,9B10,9D10,,9710,9910,9B10,9D10,Fast;,PAD FX1 Slot1 (momentary)
+PAD1_PadFx2,PAD1_PadMode6,DdjSxPad,,9750,9950,9B50,9D50,,9750,9950,9B50,9D50,Fast;,PAD FX2 Slot1 (momentary)
+PAD1_Sampler,PAD1_PadMode4,DdjSxPad,,9730,9930,9B30,9D30,,9730,9930,9B30,9D30,Fast;,Sample Slot 1 play
+PAD1_Sampler+Shift,PAD1_PadMode4+Shift,DdjSxPad,,9830,9A30,9C30,9E30,,9830,9A30,9C30,9E30,Fast;,Sample Slot 1 stop
+PAD2_BeatJump,PAD2_PadMode3,DdjSxPad,,9721,9921,9B21,9D21,,9721,9921,9B21,9D21,Fast;,BEAT JUMP (REV1)
+PAD2_HotCue,PAD2_PadMode1,DdjSxPad,,9701,9901,9B01,9D01,,9701,9901,9B01,9D01,Fast;,HOT CUE2
+PAD2_HotCue+Shift,PAD2_PadMode1+Shift,DdjSxPad,,9801,9A01,9C01,9E01,,9801,9A01,9C01,9E01,Fast;,Delete HOT CUE2
+PAD2_KeyShift,PAD2_PadMode8,DdjSxPad,,9771,9971,9B71,9D71,,9771,9971,9B71,9D71,Fast;,
+PAD2_Keyboard,PAD2_PadMode5,DdjSxPad,,9741,9941,9B41,9D41,,9741,9941,9B41,9D41,Fast;,
+PAD2_Keyboard+Shift,PAD2_PadMode5+Shift,DdjSxPad,,9841,9A41,9C41,9E41,,9841,9A41,9C41,9E41,Fast;,
+PAD2_PadFx1,PAD2_PadMode2,DdjSxPad,,9711,9911,9B11,9D11,,9711,9911,9B11,9D11,Fast;,PAD FX1 Slot2 (momentary)
+PAD2_PadFx2,PAD2_PadMode6,DdjSxPad,,9751,9951,9B51,9D51,,9751,9951,9B51,9D51,Fast;,PAD FX2 Slot2 (momentary)
+PAD2_Sampler,PAD2_PadMode4,DdjSxPad,,9731,9931,9B31,9D31,,9731,9931,9B31,9D31,Fast;,Sample Slot 2 play
+PAD2_Sampler+Shift,PAD2_PadMode4+Shift,DdjSxPad,,9831,9A31,9C31,9E31,,9831,9A31,9C31,9E31,Fast;,Sample Slot 2 stop
+PAD3_BeatJump,PAD3_PadMode3,DdjSxPad,,9722,9922,9B22,9D22,,9722,9922,9B22,9D22,Fast;,BEAT JUMP (REV1)
+PAD3_HotCue,PAD3_PadMode1,DdjSxPad,,9702,9902,9B02,9D02,,9702,9902,9B02,9D02,Fast;,HOT CUE3
+PAD3_HotCue+Shift,PAD3_PadMode1+Shift,DdjSxPad,,9802,9A02,9C02,9E02,,9802,9A02,9C02,9E02,Fast;,Delete HOT CUE3
+PAD3_KeyShift,PAD3_PadMode8,DdjSxPad,,9772,9972,9B72,9D72,,9772,9972,9B72,9D72,Fast;,
+PAD3_Keyboard,PAD3_PadMode5,DdjSxPad,,9742,9942,9B42,9D42,,9742,9942,9B42,9D42,Fast;,
+PAD3_Keyboard+Shift,PAD3_PadMode5+Shift,DdjSxPad,,9842,9A42,9C42,9E42,,9842,9A42,9C42,9E42,Fast;,
+PAD3_PadFx1,PAD3_PadMode2,DdjSxPad,,9712,9912,9B12,9D12,,9712,9912,9B12,9D12,Fast;,PAD FX1 Slot3 (momentary)
+PAD3_PadFx2,PAD3_PadMode6,DdjSxPad,,9752,9952,9B52,9D52,,9752,9952,9B52,9D52,Fast;,PAD FX2 Slot3 (momentary)
+PAD3_Sampler,PAD3_PadMode4,DdjSxPad,,9732,9932,9B32,9D32,,9732,9932,9B32,9D32,Fast;,Sample Slot 3 play
+PAD3_Sampler+Shift,PAD3_PadMode4+Shift,DdjSxPad,,9832,9A32,9C32,9E32,,9832,9A32,9C32,9E32,Fast;,Sample Slot 3 stop
+PAD4_BeatJump,PAD4_PadMode3,DdjSxPad,,9723,9923,9B23,9D23,,9723,9923,9B23,9D23,Fast;,BEAT JUMP (REV1)
+PAD4_HotCue,PAD4_PadMode1,DdjSxPad,,9703,9903,9B03,9D03,,9703,9903,9B03,9D03,Fast;,HOT CUE4
+PAD4_HotCue+Shift,PAD4_PadMode1+Shift,DdjSxPad,,9803,9A03,9C03,9E03,,9803,9A03,9C03,9E03,Fast;,Delete HOT CUE4
+PAD4_KeyShift,PAD4_PadMode8,DdjSxPad,,9773,9973,9B73,9D73,,9773,9973,9B73,9D73,Fast;,
+PAD4_Keyboard,PAD4_PadMode5,DdjSxPad,,9743,9943,9B43,9D43,,9743,9943,9B43,9D43,Fast;,
+PAD4_Keyboard+Shift,PAD4_PadMode5+Shift,DdjSxPad,,9843,9A43,9C43,9E43,,9843,9A43,9C43,9E43,Fast;,
+PAD4_PadFx1,PAD4_PadMode2,DdjSxPad,,9713,9913,9B13,9D13,,9713,9913,9B13,9D13,Fast;,PAD FX1 Slot4 (momentary)
+PAD4_PadFx2,PAD4_PadMode6,DdjSxPad,,9753,9953,9B53,9D53,,9753,9953,9B53,9D53,Fast;,PAD FX2 Slot4 (momentary)
+PAD4_Sampler,PAD4_PadMode4,DdjSxPad,,9733,9933,9B33,9D33,,9733,9933,9B33,9D33,Fast;,Sample Slot 4 play
+PAD4_Sampler+Shift,PAD4_PadMode4+Shift,DdjSxPad,,9833,9A33,9C33,9E33,,9833,9A33,9C33,9E33,Fast;,Sample Slot 4 stop
+PAD5_BeatJump,PAD5_PadMode3,DdjSxPad,,9724,9924,9B24,9D24,,9724,9924,9B24,9D24,Fast;,BEAT JUMP (REV1)
+PAD5_BeatLoop,PAD5_PadMode7,DdjSxPad,,9760,9960,9B60,9D60,,9760,9960,9B60,9D60,Fast;,
+PAD5_HotCue,PAD5_PadMode1,DdjSxPad,,9704,9904,9B04,9D04,,9704,9904,9B04,9D04,Fast;,HOT CUE5
+PAD5_HotCue+Shift,PAD5_PadMode1+Shift,DdjSxPad,,9804,9A04,9C04,9E04,,9804,9A04,9C04,9E04,Fast;,Delete HOT CUE5
+PAD5_KeyShift,PAD5_PadMode8,DdjSxPad,,9774,9974,9B74,9D74,,9774,9974,9B74,9D74,Fast;,
+PAD5_Keyboard,PAD5_PadMode5,DdjSxPad,,9744,9944,9B44,9D44,,9744,9944,9B44,9D44,Fast;,
+PAD5_Keyboard+Shift,PAD5_PadMode5+Shift,DdjSxPad,,9844,9A44,9C44,9E44,,9844,9A44,9C44,9E44,Fast;,
+PAD5_PadFx1,PAD5_PadMode2,DdjSxPad,,9714,9914,9B14,9D14,,9714,9914,9B14,9D14,Fast;,PAD FX1 Slot5 (momentary)
+PAD5_PadFx2,PAD5_PadMode6,DdjSxPad,,9754,9954,9B54,9D54,,9754,9954,9B54,9D54,Fast;,PAD FX2 Slot5 (momentary)
+PAD5_Sampler,PAD5_PadMode4,DdjSxPad,,9734,9934,9B34,9D34,,9734,9934,9B34,9D34,Fast;,Sample Slot 5 play
+PAD5_Sampler+Shift,PAD5_PadMode4+Shift,DdjSxPad,,9834,9A34,9C34,9E34,,9834,9A34,9C34,9E34,Fast;,Sample Slot 5 stop
+PAD6_BeatJump,PAD6_PadMode3,DdjSxPad,,9725,9925,9B25,9D25,,9725,9925,9B25,9D25,Fast;,BEAT JUMP (REV1)
+PAD6_BeatLoop,PAD6_PadMode7,DdjSxPad,,9761,9961,9B61,9D61,,9761,9961,9B61,9D61,Fast;,
+PAD6_HotCue,PAD6_PadMode1,DdjSxPad,,9705,9905,9B05,9D05,,9705,9905,9B05,9D05,Fast;,HOT CUE6
+PAD6_HotCue+Shift,PAD6_PadMode1+Shift,DdjSxPad,,9805,9A05,9C05,9E05,,9805,9A05,9C05,9E05,Fast;,Delete HOT CUE6
+PAD6_KeyShift,PAD6_PadMode8,DdjSxPad,,9775,9975,9B75,9D75,,9775,9975,9B75,9D75,Fast;,
+PAD6_Keyboard,PAD6_PadMode5,DdjSxPad,,9745,9945,9B45,9D45,,9745,9945,9B45,9D45,Fast;,
+PAD6_Keyboard+Shift,PAD6_PadMode5+Shift,DdjSxPad,,9845,9A45,9C45,9E45,,9845,9A45,9C45,9E45,Fast;,
+PAD6_PadFx1,PAD6_PadMode2,DdjSxPad,,9715,9915,9B15,9D15,,9715,9915,9B15,9D15,Fast;,PAD FX1 Slot6 (momentary)
+PAD6_PadFx2,PAD6_PadMode6,DdjSxPad,,9755,9955,9B55,9D55,,9755,9955,9B55,9D55,Fast;,PAD FX2 Slot6 (momentary)
+PAD6_Sampler,PAD6_PadMode4,DdjSxPad,,9735,9935,9B35,9D35,,9735,9935,9B35,9D35,Fast;,Sample Slot 6 play
+PAD6_Sampler+Shift,PAD6_PadMode4+Shift,DdjSxPad,,9835,9A35,9C35,9E35,,9835,9A35,9C35,9E35,Fast;,Sample Slot 6 stop
+PAD7_BeatJump,PAD7_PadMode3,DdjSxPad,,9726,9926,9B26,9D26,,9726,9926,9B26,9D26,Fast;,BEAT JUMP (REV1)
+PAD7_BeatLoop,PAD7_PadMode7,DdjSxPad,,9762,9962,9B62,9D62,,9762,9962,9B62,9D62,Fast;,
+PAD7_HotCue,PAD7_PadMode1,DdjSxPad,,9706,9906,9B06,9D06,,9706,9906,9B06,9D06,Fast;,HOT CUE7
+PAD7_HotCue+Shift,PAD7_PadMode1+Shift,DdjSxPad,,9806,9A06,9C06,9E06,,9806,9A06,9C06,9E06,Fast;,Delete HOT CUE7
+PAD7_KeyShift,PAD7_PadMode8,DdjSxPad,,9776,9976,9B76,9D76,,9776,9976,9B76,9D76,Fast;,
+PAD7_Keyboard,PAD7_PadMode5,DdjSxPad,,9746,9946,9B46,9D46,,9746,9946,9B46,9D46,Fast;,
+PAD7_PadFx1,PAD7_PadMode2,DdjSxPad,,9716,9916,9B16,9D16,,9716,9916,9B16,9D16,Fast;,PAD FX1 Slot7 (momentary)
+PAD7_PadFx2,PAD7_PadMode6,DdjSxPad,,9756,9956,9B56,9D56,,9756,9956,9B56,9D56,Fast;,PAD FX2 Slot7 (momentary)
+PAD7_Sampler,PAD7_PadMode4,DdjSxPad,,9736,9936,9B36,9D36,,9736,9936,9B36,9D36,Fast;,Sample Slot 7 play
+PAD7_Sampler+Shift,PAD7_PadMode4+Shift,DdjSxPad,,9836,9A36,9C36,9E36,,9836,9A36,9C36,9E36,Fast;,Sample Slot 7 stop
+PAD8_BeatJump,PAD8_PadMode3,DdjSxPad,,9727,9927,9B27,9D27,,9727,9927,9B27,9D27,Fast;,BEAT JUMP (REV1)
+PAD8_BeatLoop,PAD8_PadMode7,DdjSxPad,,9763,9963,9B63,9D63,,9763,9963,9B63,9D63,Fast;,
+PAD8_HotCue,PAD8_PadMode1,DdjSxPad,,9707,9907,9B07,9D07,,9707,9907,9B07,9D07,Fast;,HOT CUE8
+PAD8_HotCue+Shift,PAD8_PadMode1+Shift,DdjSxPad,,9807,9A07,9C07,9E07,,9807,9A07,9C07,9E07,Fast;,Delete HOT CUE8
+PAD8_KeyShift,PAD8_PadMode8,DdjSxPad,,9777,9977,9B77,9D77,,9777,9977,9B77,9D77,Fast;,
+PAD8_Keyboard,PAD8_PadMode5,DdjSxPad,,9747,9947,9B47,9D47,,9747,9947,9B47,9D47,Fast;,
+PAD8_PadFx1,PAD8_PadMode2,DdjSxPad,,9717,9917,9B17,9D17,,9717,9917,9B17,9D17,Fast;,PAD FX1 Slot8 (momentary)
+PAD8_PadFx2,PAD8_PadMode6,DdjSxPad,,9757,9957,9B57,9D57,,9757,9957,9B57,9D57,Fast;,PAD FX2 Slot8 (momentary)
+PAD8_Sampler,PAD8_PadMode4,DdjSxPad,,9737,9937,9B37,9D37,,9737,9937,9B37,9D37,Fast;,Sample Slot 8 play
+PAD8_Sampler+Shift,PAD8_PadMode4+Shift,DdjSxPad,,9837,9A37,9C37,9E37,,9837,9A37,9C37,9E37,Fast;,Sample Slot 8 stop
+PAD9_BeatLoop,PAD9_PadMode7,DdjSxPad,,9764,9964,9B64,9D64,,9764,9964,9B64,9D64,Fast;,
+PAD9_PadFx1,PAD1_PadMode2+Shift,DdjSxPad,,9810,9A10,9C10,9E10,,9810,9A10,9C10,9E10,Fast;,PAD FX1 Slot9 (momentary)
+PAD9_PadFx2,PAD1_PadMode6+Shift,DdjSxPad,,9850,9A50,9C50,9E50,,9850,9A50,9C50,9E50,Fast;,PAD FX2 Slot9 (momentary)
+PadFx1,PadFx1,Button,,901E,911E,921E,931E,,901E,911E,921E,931E,Fast;,PAD FX1 Mode On/Off
+PadFx2,PadFx1+Shift,Button,,906B,916B,926B,936B,,906B,916B,926B,936B,Fast;,PAD FX2 Mode On/Off
+PanelForward,MasterCue+Shift,Button,9662,,,,,,,,,,,Toggles through panels
+Parameter1Left_HotCue,CallLeft,Button,,9051,9151,9251,9351,,,,,,,Memory Cue Call(<<)
+Parameter1Left_KeyShift,PAD7_PadMode8+Shift,DdjSxPad,,9876,9A76,9C76,9E76,,9876,9A76,9C76,9E76,Fast;,
+Parameter1Left_Keyboard,PAD7_PadMode5+Shift,DdjSxPad,,9846,9A46,9C46,9E46,,9846,9A46,9C46,9E46,Fast;,
+Parameter1Right_HotCue,CallRight,Button,,9053,9153,9253,9353,,,,,,,Memory Cue Call(>>)
+Parameter1Right_KeyShift,PAD8_PadMode8+Shift,DdjSxPad,,9877,9A77,9C77,9E77,,9877,9A77,9C77,9E77,Fast;,
+Parameter1Right_Keyboard,PAD8_PadMode5+Shift,DdjSxPad,,9847,9A47,9C47,9E47,,9847,9A47,9C47,9E47,Fast;,
+Parameter2Left_BeatJump,PAD7_PadMode3+Shift,DdjSxPad,,9826,9A26,9C26,9E26,,9826,9A26,9C26,9E26,Fast;,
+Parameter2Right_BeatJump,PAD8_PadMode3+Shift,DdjSxPad,,9827,9A27,9C27,9E27,,9827,9A27,9C27,9E27,Fast;,
+PlayPause,PlayPause,Button,,900B,910B,920B,930B,,900B,910B,920B,930B,Fast;Priority=50;,Play/Pause
+PlayPause,PlayPause+Shift,Button,,9047,9147,9247,9347,,9047,9147,9247,9347,Fast;Priority=50;,Play/Pause
+Sampler,SamplerMode,Button,,9022,9122,9222,9322,,9022,9122,9222,9322,Fast;,SAMPLER Mode On/Off
+Sync,Sync,Button,,9058,9158,9258,9358,,9058,9158,9258,9358,Blink=600;,Sync On/Off
+TapBpm,HeadphoneCue+Shift,Button,,9068,9168,9268,9368,,9068,9168,9268,9368,,TAP BPM
+TempoRange,Sync+Shift,Button,,9060,9160,9260,9360,,9060,9160,9260,9360,,Tempo Range
+TempoSlider,TempoSlider,KnobSliderHiRes,,B000,B100,B200,B300,,,,,,Fast;,Tempo Control
+TempoSlider,TempoSlider+Shift,KnobSliderHiRes,,B005,B105,B205,B305,,,,,,Fast;,Tempo Control
+Vinyl,Vinyl,Button,,9017,9117,9217,9317,,9017,9117,9217,9317,,Vinyl Mode On/Off (for JOG)
+Zoom,Browse+Shift,Rotary,B664,,,,,,,,,,,
+HeadphonesMix,HeadphonesMix,KnobSliderHiRes,B60C,,,,,,,,,,,FX/CUE: mistura de fone
+MasterCue,MasterCue,Button,9663,,,,,9663,,,,,,FX/CUE: monitorar master
+FX1-2BeatDown,FX1-2BeatDown,Button,947A,,,,,,,,,,,FX: beat em grupo
+FX1-3BeatDown,FX1-3BeatDown,Button,947B,,,,,,,,,,,FX: beat em grupo
+FX1-2BeatUp,FX1-2BeatUp,Button,947C,,,,,,,,,,,FX: beat em grupo
+FX1-3BeatUp,FX1-3BeatUp,Button,947D,,,,,,,,,,,FX: beat em grupo
+FX2-2BeatDown,FX2-2BeatDown,Button,957A,,,,,,,,,,,FX: beat em grupo
+FX2-3BeatDown,FX2-3BeatDown,Button,957B,,,,,,,,,,,FX: beat em grupo
+FX2-2BeatUp,FX2-2BeatUp,Button,957C,,,,,,,,,,,FX: beat em grupo
+FX2-3BeatUp,FX2-3BeatUp,Button,957D,,,,,,,,,,,FX: beat em grupo

@@ -63,6 +63,20 @@ Isso cria uma segunda cópia, sem substituir a cópia REV1 existente. No modo **
 
 O mapeamento pessoal REV1 é compartilhado entre as cópias do rekordbox. Se ele já existir, o instalador cria um backup `DDJ-REV1.midi.csv.before-rev1-*.backup` e instala o perfil de stems nesse local, portanto a cópia REV1 anterior também poderá usar o novo perfil. Para desfazer essa troca, feche o rekordbox e restaure o backup como `DDJ-REV1.midi.csv` na mesma pasta. O aplicativo REV1 Stems pode ser removido separadamente.
 
+### Perfil experimental com o mapeamento pessoal do Windows
+
+O repositório inclui uma cópia exata do mapeamento pessoal encontrado no Windows. Para testar esse arquivo no rekordbox 6.8.5 do Mac, com o repositório completo baixado e o rekordbox fechado, execute na pasta `macos`:
+
+```bash
+python3 install.py --windows-map --check
+python3 install.py --windows-map
+open "$HOME/Applications/rekordbox REV1 Mapa Windows 6.8.5.app"
+```
+
+Acrescente `--stems` aos dois comandos do instalador para produzir a cópia `rekordbox REV1 Mapa Windows Stems 6.8.5.app`, com os três pads de stems experimentais. O instalador verifica o hash do arquivo Windows e preserva em backup qualquer mapeamento pessoal anterior encontrado nos caminhos conhecidos. Como o mapeamento pessoal é compartilhado entre as cópias, a instalação pode também afetar outras cópias do rekordbox; restaure o backup para desfazer a troca.
+
+**Esta opção ainda precisa ser testada no Mac com a REV1.** O arquivo pessoal do Windows não inclui as entradas de jog presentes no mapeamento de sistema; usar esse perfil não garante jogs. As correções de jog 3/4, FX e mixer de fone do Windows dependem de código específico do rekordbox 7.2.14 e não foram portadas para o motor macOS 6.8.5. As entradas MIDI adicionais, por si só, não reproduzem essas correções.
+
 ### Diagnóstico dos jogs no Mac
 
 Se a cópia abrir e a REV1 for reconhecida, o diagnóstico abaixo ajuda a adaptar os jogs 3/4 para o motor específico do macOS. Ele observa temporariamente quais decks recebem eventos de giro e toque e se existe um processador associado; **não ativa a correção**. Com a cópia aberta e a REV1 conectada, no Terminal dentro da pasta `macos` execute:
@@ -109,6 +123,13 @@ O comando verifica a cópia REV1 Stems, cria `rekordbox REV1 Diagnostico 6.8.5.a
 Feche o rekordbox e remova `~/Applications/rekordbox REV1 6.8.5.app`. Caso um mapeamento pessoal anterior tenha sido substituído, restaure o arquivo `DDJ-REV1.midi.csv.before-rev1-*.backup` para `DDJ-REV1.midi.csv` na mesma pasta. O aplicativo original continua disponível.
 
 ## Windows — rekordbox 7.2.14 x64
+
+### Mapeamentos encontrados no Windows de referência
+
+* `windows/DDJ-REV1.midi.csv` é o mapeamento de sistema distribuído pelo instalador; na comparação local, era idêntico ao arquivo em `C:\Program Files\rekordbox\rekordbox 7.2.14\MidiMappings`.
+* `windows/DDJ-REV1.windows-pessoal.midi.csv` é uma cópia exata do mapeamento pessoal encontrado em `%APPDATA%\Pioneer\rekordbox6\MidiMappings\DDJ-REV1.midi.csv`. SHA-256: `621f9b79d1e513ab4b12fab03c7ba9e7cdf723b9a538688babc392e150ce9918`. Este arquivo registra o estado encontrado, e não é instalado automaticamente.
+
+O arquivo pessoal contém entradas adicionais de FX e fone e usa endereços expandidos por deck. Ele não contém as entradas de jog presentes no arquivo de sistema; portanto, os dois arquivos foram preservados separadamente. O comportamento completo também depende do launcher e das correções temporárias em memória.
 
 ### Instalar
 

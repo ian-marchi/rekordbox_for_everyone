@@ -15,9 +15,13 @@ HERE = Path(__file__).resolve().parent
 DEFAULT_APP = Path('/Applications/rekordbox 6/rekordbox.app')
 DESTINATION = Path.home() / 'Applications' / 'rekordbox REV1 6.8.5.app'
 STEMS_DESTINATION = Path.home() / 'Applications' / 'rekordbox REV1 Stems 6.8.5.app'
+WINDOWS_MAP_DESTINATION = Path.home() / 'Applications' / 'rekordbox REV1 Mapa Windows 6.8.5.app'
+WINDOWS_STEMS_DESTINATION = Path.home() / 'Applications' / 'rekordbox REV1 Mapa Windows Stems 6.8.5.app'
 ORIGINAL_SHA256 = 'ba9a80ea5fdb01f1981d8b05cc6b35c9b9bd480919aab58184ea3c89b90f50c5'
 PATCHED_SHA256 = '15c0752720562f7658c72ee2f0ef47f50132b9196d3013431be787ef83f012d9'
 MAPPING_SHA256 = 'd2e95ba0a2cd4f29a3a06ef0478d4a587eb7da845504ecbfed4f5e5a35b88fcc'
+WINDOWS_MAPPING_SHA256 = '621f9b79d1e513ab4b12fab03c7ba9e7cdf723b9a538688babc392e150ce9918'
+WINDOWS_MAPPING = HERE.parent / 'windows' / 'DDJ-REV1.windows-pessoal.midi.csv'
 VERSION = '6.8.5.0002'
 NAME_OFFSET = 0x3eb1b23
 PID_OFFSETS = (0xff82b5, 0xff8815)
@@ -78,10 +82,10 @@ def stems_mapping(data):
     return b''.join(output)
 
 
-def mapping_data(stems=False):
-    path = HERE / MAP_NAME
+def mapping_data(stems=False, windows_map=False):
+    path = WINDOWS_MAPPING if windows_map else HERE / MAP_NAME
     data = path.read_bytes()
-    if digest(data) != MAPPING_SHA256:
+    if digest(data) != (WINDOWS_MAPPING_SHA256 if windows_map else MAPPING_SHA256):
         raise ValueError('Mapeamento ausente ou alterado; nao sera instalado.')
     return stems_mapping(data) if stems else data
 
@@ -117,6 +121,8 @@ def main(argv=None):
                         help='Verificar compatibilidade sem modificar arquivos')
     parser.add_argument('--stems', action='store_true',
                         help='Criar copia separada com pads de stems experimentais')
+    parser.add_argument('--windows-map', action='store_true',
+                        help='Usar copia experimental do mapeamento pessoal do Windows')
     args = parser.parse_args(argv)
     if sys.platform != 'darwin':
         raise RuntimeError('Execute este instalador em um Mac com macOS.')
@@ -125,8 +131,11 @@ def main(argv=None):
     app = args.app.expanduser().resolve(strict=True)
     executable = inspect_app(app)
     patched = patch_binary(executable.read_bytes())
-    mapping = mapping_data(stems=args.stems)
-    destination = STEMS_DESTINATION if args.stems else DESTINATION
+    mapping = mapping_data(stems=args.stems, windows_map=args.windows_map)
+    if args.windows_map:
+        destination = WINDOWS_STEMS_DESTINATION if args.stems else WINDOWS_MAP_DESTINATION
+    else:
+        destination = STEMS_DESTINATION if args.stems else DESTINATION
     print('Build Intel 6.8.5.0002 e mapeamento: verificados.')
     overrides = existing_user_maps()
     for item in overrides:
