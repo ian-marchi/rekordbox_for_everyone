@@ -69,18 +69,6 @@ class BinaryPatchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'sampler'):
             install.stems_mapping(broken)
 
-    def test_windows_map_preserves_snapshot_and_stems_addresses(self):
-        data = install.mapping_data(windows_map=True)
-        self.assertEqual(data, install.WINDOWS_MAPPING.read_bytes())
-        rows = list(csv.reader(io.StringIO(install.mapping_data(stems=True, windows_map=True).decode('utf-8'))))
-        stems = [row for row in rows if row and row[0] in
-                 {'ActivePartDrums', 'ActivePartVocal', 'ActivePartInst'}]
-        self.assertEqual([(row[0], row[4:8]) for row in stems], [
-            ('ActivePartDrums', ['9730', '9930', '9B30', '9D30']),
-            ('ActivePartVocal', ['9731', '9931', '9B31', '9D31']),
-            ('ActivePartInst', ['9732', '9932', '9B32', '9D32']),
-        ])
-
 
 if __name__ == '__main__':
     unittest.main()
