@@ -19,7 +19,10 @@ METHODS = {0x150dd60: bytes.fromhex('554889e5415741564155415453'),
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--debug', action='store_true', help='usar a copia de diagnostico separada')
+    parser.add_argument('--seconds', type=int, default=90, help='tempo de observacao em segundos (1 a 300)')
     args = parser.parse_args()
+    if not 1 <= args.seconds <= 300:
+        raise ValueError('Tempo de observacao deve estar entre 1 e 300 segundos.')
     if sys.platform != 'darwin':
         raise RuntimeError('Execute no Mac com o rekordbox REV1 Stems aberto.')
     import frida
@@ -45,9 +48,10 @@ def main():
         script.on('message', lambda message, data: print(json.dumps(
             message.get('payload', message), ensure_ascii=False), flush=True))
         script.load()
-        print('Por 45 segundos: primeiro pressione Sampler e os tres pads de stems duas vezes;', flush=True)
-        print('depois pressione FX 1 e mova a alavanca.', flush=True)
-        done.wait(45)
+        print(f'Por {args.seconds} segundos: selecione Sampler e pressione os pads 1, 2 e 3;', flush=True)
+        print('em cada lado selecione FX 1, 2 e 3, mova a alavanca e o knob de depth;', flush=True)
+        print('por fim, mova master/headphones e pressione os botoes CUE.', flush=True)
+        done.wait(args.seconds)
     finally:
         try:
             session.detach()

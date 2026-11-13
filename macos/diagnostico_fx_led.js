@@ -10,10 +10,15 @@ function observe(direction, message, device) {
     const status = bytes.readU8(), control = bytes.add(1).readU8(), value = bytes.add(2).readU8();
     const fx = (status === 0x94 || status === 0x95) &&
       (control === 0x50 || control === 0x06 || control === 0x07 || (control >= 0x70 && control <= 0x72));
+    // Include both bytes of the known high-resolution depth controls.
+    const depth = (status === 0xb4 || status === 0xb5) && (control === 0x02 || control === 0x22);
+    const mixer = status === 0xb6 && [0x08, 0x28, 0x0d, 0x2d].includes(control);
+    const cue = (status === 0x96 && control === 0x63) ||
+      (status >= 0x90 && status <= 0x93 && control === 0x54);
     const pad = status >= 0x90 && status <= 0x9f &&
       ((control >= 0x30 && control <= 0x37) || (direction === 'entrada' && control <= 7));
     const mode = status >= 0x90 && status <= 0x93 && control === 0x22;
-    if (!fx && !pad && !mode) return;
+    if (!fx && !depth && !mixer && !cue && !pad && !mode) return;
     count++;
     let nome = 'indisponivel';
     try {

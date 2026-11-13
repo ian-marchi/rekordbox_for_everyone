@@ -69,6 +69,16 @@ class BinaryPatchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'sampler'):
             install.stems_mapping(broken)
 
+    def test_stems_profile_keeps_four_deck_jog_mappings(self):
+        rows = list(csv.reader(io.StringIO(install.mapping_data(stems=True).decode('utf-8'))))
+        jogs = {row[0]: row for row in rows if row and row[0] in
+                {'JogScratch', 'JogPitchBend', 'JogSearch', 'JogTouch',
+                 'WheelPitchBend', 'WheelSearch'}}
+        self.assertEqual(set(jogs), {'JogScratch', 'JogPitchBend', 'JogSearch',
+                                    'JogTouch', 'WheelPitchBend', 'WheelSearch'})
+        for row in jogs.values():
+            self.assertEqual(row[4:8], ['0', '1', '2', '3'])
+
 
 if __name__ == '__main__':
     unittest.main()

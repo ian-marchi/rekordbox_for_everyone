@@ -30,11 +30,16 @@ def check_executable(executable):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--stems', action='store_true', help='diagnosticar a copia REV1 Stems')
+    parser.add_argument('--debug', action='store_true', help='diagnosticar a copia de diagnostico')
     args = parser.parse_args()
     if sys.platform != 'darwin':
         raise RuntimeError('Execute no Mac Intel com o rekordbox REV1 aberto.')
     import frida
-    app = install.STEMS_DESTINATION if args.stems else install.DESTINATION
+    if args.debug:
+        import preparar_diagnostico
+        app = preparar_diagnostico.DESTINATION
+    else:
+        app = install.STEMS_DESTINATION if args.stems else install.DESTINATION
     executable = install.inspect_app(app).resolve(strict=True)
     check_executable(executable)
     device = frida.get_local_device()

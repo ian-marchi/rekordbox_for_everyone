@@ -87,7 +87,7 @@ python3 -m venv .venv
 .venv/bin/python diagnostico_fx_led.py
 ```
 
-Durante os 45 segundos de observação, selecione primeiro Sampler e pressione cada um dos três pads de stems duas vezes; depois pressione e solte FX 1 e mova a alavanca do efeito. Envie a saída do Terminal e informe quais LEDs ficaram acesos quando cada parte estava audível. O diagnóstico observa temporariamente mensagens MIDI limitadas a esses controles e inclui nomes das portas MIDI; não muda o perfil. As correções de FX e LEDs ainda dependem do resultado e de testes no Mac.
+Durante os 90 segundos de observação, selecione primeiro Sampler e pressione cada um dos três pads de stems duas vezes; depois teste os três botões FX, a alavanca e o controle de depth de cada lado, e os controles de master e fone. Envie a saída do Terminal e informe o que aconteceu em cada teste. O diagnóstico observa temporariamente mensagens MIDI limitadas a esses controles e inclui nomes das portas MIDI; não muda o perfil. As correções ainda dependem do resultado e de testes no Mac.
 
 `macos/fx_profile.js` contém a lógica de seleção de FX compartilhada com o Windows e uma proposta de inversão para os LEDs dos três pads. É código de preparação testado isoladamente; **ainda não está conectado ao MIDI do Mac nem modifica o funcionamento do aplicativo**.
 
@@ -103,6 +103,8 @@ sudo env HOME="$HOME" "$PWD/.venv/bin/python" diagnostico_fx_led.py --debug
 ```
 
 O comando verifica a cópia REV1 Stems, cria `rekordbox REV1 Diagnostico 6.8.5.app` separadamente, assina e verifica a nova cópia. Ela utiliza as mesmas configurações e biblioteca do rekordbox e pode ser apagada quando não for mais necessária. `get-task-allow` pode permitir a conexão, mas a autorização depende também das proteções do macOS; se falhar, compartilhe a mensagem. Não é necessário alterar o SIP para executar esses comandos.
+
+Para registrar também os jogs na cópia de diagnóstico, use `sudo env HOME="$HOME" "$PWD/.venv/bin/python" diagnostico_jogs.py --debug`. O diagnóstico MIDI agora observa por padrão 90 segundos e também registra os controles de depth, master, volume de fone e CUE; `--seconds 120` permite mais tempo. O registro limita-se às mensagens MIDI observadas pelo aplicativo e não mede volume de áudio nem comprova que o hardware recebeu ou executou uma ação.
 
 ### Remover no macOS
 
